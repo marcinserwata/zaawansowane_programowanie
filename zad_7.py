@@ -12,6 +12,7 @@
 import requests
 from typing import Optional
 
+
 class Brewery:
     def __init__(
         self,
@@ -58,6 +59,7 @@ class Brewery:
             f"Coordinates: ({self.latitude or 'N/A'}, {self.longitude or 'N/A'})\n"
         )
 
+
 def main():
     url = "https://api.openbrewerydb.org/v1/breweries?per_page=20"
     response = requests.get(url)
@@ -88,6 +90,6 @@ def main():
     for brewery in breweries:
         print(brewery)
 
+
 if __name__ == "__main__":
     main()
-

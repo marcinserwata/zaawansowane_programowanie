@@ -4,6 +4,7 @@
 def multiply(a, b):
     return a * b
 
+
 a = 5
 b = 3
 result = multiply(a, b)

@@ -6,6 +6,7 @@
 def is_value_in_list(list, value):
     return value in list
 
+
 list = [1, 2, 3, 4, 5]
 value = 7
 result = is_value_in_list(list, value)

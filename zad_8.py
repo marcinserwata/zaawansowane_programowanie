@@ -8,6 +8,7 @@ import requests
 from typing import Optional
 import argparse
 
+
 class Brewery:
     def __init__(
         self,
@@ -54,6 +55,7 @@ class Brewery:
             f"Coordinates: ({self.latitude or 'N/A'}, {self.longitude or 'N/A'})\n"
         )
 
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--city', type=str)
@@ -92,6 +94,7 @@ def main():
 
     for brewery in breweries:
         print(brewery)
+
 
 if __name__ == "__main__":
     main()

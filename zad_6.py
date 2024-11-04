@@ -9,6 +9,7 @@ def merge_lists(list1, list2):
     merged_list = [x ** 3 for x in merged_list]
     return merged_list
 
+
 list1 = [1, 2, 3, 4, 5]
 list2 = [3, 4, 5, 6, 7]
 result = merge_lists(list1, list2)

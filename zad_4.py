@@ -5,6 +5,7 @@
 def is_sum_greater_or_equal(a, b, c):
     return a + b >= c
 
+
 a = 5
 b = 3
 c = 7

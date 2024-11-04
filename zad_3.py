@@ -7,6 +7,7 @@
 def is_even(number):
     return number % 2 == 0
 
+
 number = 6
 result = is_even(number)
 if result:
