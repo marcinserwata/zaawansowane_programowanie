@@ -6,6 +6,7 @@ class Student:
     def is_passed(self):
         return sum(self.marks) / len(self.marks) > 50
 
+
 student1 = Student("Jan", [50, 60, 70])
 student2 = Student("Anna", [30, 40, 50])
 

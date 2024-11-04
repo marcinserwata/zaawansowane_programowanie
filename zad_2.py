@@ -6,6 +6,7 @@ class Student:
     def __str__(self):
         return f"Student: {self.name}, {self.marks}"
 
+
 class Library:
     def __init__(self, city, street, zip_code, open_hours, phone):
         self.city = city
@@ -16,6 +17,7 @@ class Library:
 
     def __str__(self):
         return f"Library: {self.city}, {self.street}, {self.zip_code}, {self.open_hours}, {self.phone}"
+
 
 class Employee:
     def __init__(self, first_name, last_name, hire_date, birth_date, city, street, zip_code, phone):
@@ -29,7 +31,11 @@ class Employee:
         self.phone = phone
 
     def __str__(self):
-        return f"Employee: {self.first_name}, {self.last_name}, {self.hire_date}, {self.birth_date}, {self.city}, {self.street}, {self.zip_code}, {self.phone}"
+        return (f"Employee: {self.first_name}, {self.last_name}, "
+                f"{self.hire_date}, {self.birth_date}, "
+                f"{self.city}, {self.street}, {self.zip_code}, "
+                f"{self.phone}")
+
 
 class Book:
     def __init__(self, library, publication_date, author_name, author_surname, number_of_pages):
@@ -40,7 +46,9 @@ class Book:
         self.number_of_pages = number_of_pages
 
     def __str__(self):
-        return f"Book: {self.library}, {self.publication_date}, {self.author_name}, {self.author_surname}, {self.number_of_pages}"
+        return (f"Book: {self.library}, {self.publication_date}, {self.author_name}, "
+                f"{self.author_surname}, {self.number_of_pages}")
+
 
 class Order:
     def __init__(self, employee, student, books, order_date):
@@ -51,6 +59,7 @@ class Order:
 
     def __str__(self):
         return f"Order: {self.employee}, {self.student}, {self.books}, {self.order_date}"
+
 
 library1 = Library("Warsaw", "Marszalkowska", "00-001", "8:00-20:00", "123456789")
 library2 = Library("Krakow", "Krakowska", "00-002", "9:00-21:00", "987654321")
@@ -74,5 +83,3 @@ order2 = Order(employee2, student2, [book3, book4], "2020-02-01")
 
 print(order1)
 print(order2)
-
-
