@@ -10,8 +10,10 @@ def multiply_i(numbers):
         multiplied_numbers.append(number * 2)
     return multiplied_numbers
 
+
 def multiply_ii(numbers):
     return [number * 2 for number in numbers]
+
 
 numbers = [1, 2, 3, 4, 5]
 print(multiply_i(numbers))

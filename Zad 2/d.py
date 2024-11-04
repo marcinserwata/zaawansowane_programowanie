@@ -6,5 +6,6 @@ def print_every_second(numbers):
     for i in range(1, len(numbers), 2):
         print(numbers[i])
 
+
 numbers = list(range(11, 21))
 print_every_second(numbers)
