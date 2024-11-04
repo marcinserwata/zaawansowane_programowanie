@@ -6,5 +6,5 @@ def print_names(names):
         print(name)
 
 namessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss = ['Jan', 'Anna', 'Krzysztof', 'Katarzyna', 'Piotr']
-print_names(names)
+print_names(namessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss)
 
