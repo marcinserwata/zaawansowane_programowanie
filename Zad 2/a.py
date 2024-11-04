@@ -8,4 +8,3 @@ def print_names(names):
 names = ['Jan', 'Anna', 'Krzysztof', 'Katarzyna', 'Piotr']
 print_names(names)
 
-
