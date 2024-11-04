@@ -5,6 +5,6 @@ def print_names(names):
     for name in names:
         print(name)
 
-names = ['Jan', 'Anna', 'Krzysztof', 'Katarzyna', 'Piotr']
+namessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss = ['Jan', 'Anna', 'Krzysztof', 'Katarzyna', 'Piotr']
 print_names(names)
 
