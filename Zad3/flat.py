@@ -1,5 +1,6 @@
 import Zad3.property as prop
 
+
 class Flat(prop.Property):
     def __init__(self, area, rooms, price, address, floor):
         super().__init__(area, rooms, price, address)
