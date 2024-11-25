@@ -1,62 +1,54 @@
-import csv
+import sqlite3
 import time
 import os
 
-JOB_FILE = 'jobs.csv'
+DB_FILE = 'jobs.db'
 
 
 def main():
     print("Consumer uruchomiony.")
+
     while True:
-        if os.path.isfile(JOB_FILE):
-            with open(JOB_FILE, 'r', newline='') as csvfile:
-                reader = csv.reader(csvfile)
-                rows = list(reader)
+        if os.path.isfile(DB_FILE):
+            conn = sqlite3.connect(DB_FILE)
+            c = conn.cursor()
 
-            header = rows[0]
-            data_rows = rows[1:]
+            # Fetch the first pending job
+            c.execute('''
+                SELECT id FROM jobs WHERE status = 'pending' ORDER BY id LIMIT 1
+            ''')
+            job = c.fetchone()
 
-            pending_jobs = [row for row in data_rows if row[1] == 'pending']
-
-            if pending_jobs:
-                job = pending_jobs[0]
+            if job:
                 job_id = job[0]
                 print(f"Znaleziono pracę {job_id}. Rozpoczynam wykonywanie.")
 
-                for row in data_rows:
-                    if row[0] == job_id:
-                        row[1] = 'in_progress'
-                        break
+                # Update status to 'in_progress'
+                c.execute('''
+                    UPDATE jobs SET status = 'in_progress' WHERE id = ?
+                ''', (job_id,))
+                conn.commit()
 
-                with open(JOB_FILE, 'w', newline='') as csvfile:
-                    writer = csv.writer(csvfile)
-                    writer.writerow(header)
-                    writer.writerows(data_rows)
+                conn.close()
 
-                time.sleep(30)
+                time.sleep(30)  # Simulate processing time
 
-                with open(JOB_FILE, 'r', newline='') as csvfile:
-                    reader = csv.reader(csvfile)
-                    rows = list(reader)
+                conn = sqlite3.connect(DB_FILE)
+                c = conn.cursor()
 
-                header = rows[0]
-                data_rows = rows[1:]
-
-                for row in data_rows:
-                    if row[0] == job_id:
-                        row[1] = 'done'
-                        break
-
-                with open(JOB_FILE, 'w', newline='') as csvfile:
-                    writer = csv.writer(csvfile)
-                    writer.writerow(header)
-                    writer.writerows(data_rows)
+                # Update status to 'done'
+                c.execute('''
+                    UPDATE jobs SET status = 'done' WHERE id = ?
+                ''', (job_id,))
+                conn.commit()
+                conn.close()
 
                 print(f"Praca {job_id} została ukończona.")
             else:
                 print("Brak prac o statusie 'pending'.")
+                conn.close()
         else:
-            print("Plik z pracami nie istnieje.")
+            print("Plik bazy danych nie istnieje.")
 
         time.sleep(5)
 

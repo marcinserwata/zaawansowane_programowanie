@@ -1,24 +1,33 @@
-import csv
+import sqlite3
 import uuid
-import os
 
-JOB_FILE = 'jobs.csv'
+DB_FILE = 'jobs.db'
 
 
 def main():
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+
+    # Create table if it doesn't exist
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS jobs (
+            id TEXT PRIMARY KEY,
+            status TEXT
+        )
+    ''')
+
     job_id = str(uuid.uuid4())
+    job_status = 'pending'
 
-    job_data = [job_id, 'pending']
+    # Insert new job
+    c.execute('''
+        INSERT INTO jobs (id, status) VALUES (?, ?)
+    ''', (job_id, job_status))
 
-    file_exists = os.path.isfile(JOB_FILE)
+    conn.commit()
+    conn.close()
 
-    with open(JOB_FILE, 'a', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        if not file_exists:
-            writer.writerow(['id', 'status'])
-        writer.writerow(job_data)
-
-    print(f"Dodano pracę {job_id} ze statusem 'pending'.")
+    print(f"Dodano pracę {job_id} ze statusem '{job_status}'.")
 
 
 if __name__ == '__main__':
